@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -24,5 +22,23 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function test()
+    {
+        $x = [
+            [
+                'id' => 1,
+                'title' => 'meeting1',
+                'start' => '2018-04-20'
+            ],
+            [
+                'id' => 2,
+                'title' => 'meeting2',
+                'start' => '2018-04-20'
+            ]
+        ];
+
+        return response()->json($x);
     }
 }

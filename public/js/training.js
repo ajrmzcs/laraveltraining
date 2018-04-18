@@ -15,11 +15,6 @@ $(function () {
         editable: true,
         eventLimit: true, // allow "more" link when too many events
         navLinks: true,
-        events: [
-            {
-                title: 'Meeting',
-                start: TODAY + 'T14:30:00'
-            }
-        ]
+        events: '/test',
     });
 });
