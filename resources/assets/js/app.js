@@ -15,8 +15,29 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+//
+// const app = new Vue({
+//     el: '#app'
+// });
 
-const app = new Vue({
-    el: '#app'
+$(function () {
+
+    let todayDate = moment().startOf('day');
+    let YM = todayDate.format('YYYY-MM');
+    let YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
+    let TODAY = todayDate.format('YYYY-MM-DD');
+    let TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
+
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay,listWeek'
+        },
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        navLinks: true,
+        events: '/test',
+    });
 });
