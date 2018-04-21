@@ -1,9 +1,9 @@
-#Laravel Training
+# Laravel Training
 
 Este training tiene como objetivo mostrar un poco el ecosistema del framework laravel
 y como php ha avanzado con el transcurso del tiempo.
 
-####Requerimientos
+#### Requerimientos
 
 - Vagrant [Download](https://www.vagrantup.com/downloads.html)
 - VirtualBox [Download](https://www.virtualbox.org/wiki/Downloads)
