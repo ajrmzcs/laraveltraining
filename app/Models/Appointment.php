@@ -28,4 +28,25 @@ class Appointment extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function getNotDate($notificationDate)
+    {
+        switch ($notificationDate) {
+
+            case 10:
+                $notificationDate = '10 min before';
+                break;
+            case 30:
+                $notificationDate = '30 min before';
+                break;
+            case 1440:
+                $notificationDate = '1 day before';
+                break;
+            default:
+                $notificationDate = '';
+                break;
+        }
+
+        return $notificationDate;
+    }
 }

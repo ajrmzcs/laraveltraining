@@ -31,6 +31,10 @@ class AppointmentCreated extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.new-appointment')->subject('You have a new appointment');
+        if($this->appointment->wasRecentlyCreated){
+            return $this->markdown('emails.new-appointment')->subject('You have a new appointment');
+        } else {
+            return $this->markdown('emails.appointment-notification')->subject('Remember your appointment');
+        }
     }
 }
