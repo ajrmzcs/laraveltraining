@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function showAppointments()
     {
 
-        $appointments = Appointment::all();
+        $appointments = Appointment::where('user_id', Auth()->user()->id)->get();
 
         $events = [];
 

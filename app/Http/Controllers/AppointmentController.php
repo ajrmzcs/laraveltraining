@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AppointmentCreated;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class AppointmentController extends Controller
@@ -70,13 +72,35 @@ class AppointmentController extends Controller
 
             $notificationDate = $appointmentDate->subMinutes($request->notification_date);
 
-            Appointment::create([
+            $appointment = Appointment::create([
                 'title' => $request->title,
                 'description' => $request->description,
                 'appointment_date' => $request->datetime,
                 'notification_date' => $notificationDate,
                 'user_id' => Auth()->user()->id
             ]);
+
+            // Appointment email
+
+            // Minutes to string
+            switch ($request->notification_date) {
+
+                case 10:
+                    $appointment->notification_date = '10 min before';
+                    break;
+                case 30:
+                    $appointment->notification_date = '30 min before';
+                    break;
+                case 1440:
+                    $appointment->notification_date = '1 day before';
+                    break;
+                default:
+                    $appointment->notification_date = '';
+                    break;
+            }
+
+
+            Mail::to($request->user())->send(new AppointmentCreated($appointment));
 
             return redirect()->route('home')->with('status', 'Appointment created');
 
