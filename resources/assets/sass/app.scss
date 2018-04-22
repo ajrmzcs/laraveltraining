@@ -2,6 +2,9 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
+// Font awesome
+@import "~font-awesome/scss/font-awesome.scss";
+
 // Variables
 @import "variables";
 
@@ -14,4 +17,8 @@
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.button-margin {
+  margin: 0 1rem 1rem 0;
 }

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
+use Illuminate\Support\Carbon;
+
 class HomeController extends Controller
 {
     /**
@@ -24,21 +27,26 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function test()
+    public function showAppointments()
     {
-        $x = [
-            [
-                'id' => 1,
-                'title' => 'meeting1',
-                'start' => '2018-04-20'
-            ],
-            [
-                'id' => 2,
-                'title' => 'meeting2',
-                'start' => '2018-04-20'
-            ]
-        ];
 
-        return response()->json($x);
+        $appointments = Appointment::all();
+
+        $events = [];
+
+        if (!empty($appointments)) {
+            foreach($appointments as $appointment) {
+                array_push($events,[
+                    'id' => $appointment->id,
+                    'title' => $appointment->title,
+                    'start' => $appointment->appointment_date,
+                    'end' => (new Carbon($appointment->appointment_date))->addHour(1),
+                    'allDay' => false,
+                    'url' => route('appointment.show', [$appointment->id]),
+                ]);
+            }
+        }
+
+        return response()->json($events);
     }
 }

@@ -11,7 +11,7 @@ class Appointment extends Model
      *
      * @var array
      */
-    protected $fillable = ["title", "description", "appointment_date", "appoinment_type", "notification_date"];
+    protected $fillable = ['title', 'description', 'appointment_date', 'appointment_time', 'notification_date', 'user_id'];
 
     /**
      * Table name

@@ -17,9 +17,8 @@ class CreteAppointmentsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
-            $table->date('appointment_date');
-            $table->time('appointment_time');
-            $table->timestamp('notification_date');
+            $table->datetime('appointment_date');
+            $table->datetime('notification_date');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')

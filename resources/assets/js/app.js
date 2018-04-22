@@ -38,6 +38,6 @@ $(function () {
         editable: true,
         eventLimit: true, // allow "more" link when too many events
         navLinks: true,
-        events: '/test',
+        events: '/show-appointments',
     });
 });
