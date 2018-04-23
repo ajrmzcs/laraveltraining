@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 
 class SendNotifications extends Command
 {
+
     /**
      * The name and signature of the console command.
      *
