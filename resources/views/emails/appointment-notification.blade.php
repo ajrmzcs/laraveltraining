@@ -9,8 +9,6 @@ Description: {{ $appointment->description }}
 
 Due date: {{ $appointment->appointment_date }}
 
-Send notification: {{ $appointment->notification_date }}
-
 @component('mail::button', ['url' => "http://laraveltraining.test/appointment/$appointment->id"])
 See your Appointment
 @endcomponent
